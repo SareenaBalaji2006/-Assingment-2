@@ -1,0 +1,135 @@
+#include <iostream>
+#include <string>
+class Employee {
+public:
+string Emp_name, Emp_id, Address, Mail_id;
+long long Mobile_no;
+void getDetails() 
+{
+cout << "Enter Name: ";
+cin.ignore();
+getline(cin, Emp_name);
+cout << "Enter ID: ";
+cin >> Emp_id;
+cin.ignore();
+cout << "Enter Address: ";
+getline(cin, Address);
+cout << "Enter Mail ID: ";
+getline(cin, Mail_id);
+cout << "Enter Mobile No: ";
+cin >> Mobile_no;
+}
+void displayDetails()
+ {
+   cout << "\n--- Employee Details ---\n";
+   cout << "Name: " << Emp_name << "\n";
+   cout << "ID: " << Emp_id << "\n";
+   cout << "Address: " << Address << "\n";
+   cout << "Mail ID: " << Mail_id << "\n";
+   cout << "Mobile No: " << Mobile_no << "\n";
+    }
+};
+
+class AssistantProfessor : public Employee {
+public:
+    int BP;
+    void getPay()
+ {
+    cout << "Enter Basic Pay: ";
+    cin >> BP;
+  }
+    void generateSlip()
+ {
+   int DA = (97 * BP) / 100;
+   int HRA = (10 * BP) / 100;
+   int PF = (12 * BP) / 100;
+   int staffFund = (1 * BP) / 1000;
+   int gross = BP + DA + HRA;
+   int net = gross - PF - staffFund;
+displayDetails();
+   cout << "Basic Pay: " << BP << "\nDA: " << DA
+    << "\nHRA: " << HRA << "\nPF: " << PF
+    << "\nStaff Club Fund: " << staffFund
+    << "\nGross Salary: " << gross
+    << "\nNet Salary: " << net << "\n";
+    }
+};
+
+class AssociateProfessor : public Employee {
+public:
+    int BP;
+    void getPay() 
+{
+    cout << "Enter Basic Pay: ";
+    cin >> BP;
+ }
+    void generateSlip() {
+        int DA = (97 * BP) / 100;
+        int HRA = (10 * BP) / 100;
+        int PF = (12 * BP) / 100;
+        int staffFund = (1 * BP) / 1000;
+        int gross = BP + DA + HRA;
+        int net = gross - PF - staffFund;
+
+        displayDetails();
+        cout << "Basic Pay: " << BP << "\nDA: " << DA
+             << "\nHRA: " << HRA << "\nPF: " << PF
+             << "\nStaff Club Fund: " << staffFund
+             << "\nGross Salary: " << gross
+             << "\nNet Salary: " << net << "\n";
+    }
+};
+
+class Professor : public Employee {
+public:
+    int BP;
+    void getPay() {
+        cout << "Enter Basic Pay: ";
+        cin >> BP;
+    }
+    void generateSlip() {
+        int DA = (97 * BP) / 100;
+        int HRA = (10 * BP) / 100;
+        int PF = (12 * BP) / 100;
+        int staffFund = (1 * BP) / 1000;
+        int gross = BP + DA + HRA;
+        int net = gross - PF - staffFund;
+
+        displayDetails();
+        cout << "Basic Pay: " << BP << "\nDA: " << DA
+             << "\nHRA: " << HRA << "\nPF: " << PF
+             << "\nStaff Club Fund: " << staffFund
+             << "\nGross Salary: " << gross
+             << "\nNet Salary: " << net << "\n";
+    }
+};
+
+int main() {
+    int ch;
+    cout << "1. Assistant Professor\n2. Associate Professor\n3. Professor\n";
+    cout << "Enter your choice: ";
+    cin >> ch;
+
+    if (ch == 1) {
+        AssistantProfessor ap;
+        ap.getDetails();
+        ap.getPay();
+        ap.generateSlip();
+    } 
+    else if (ch == 2) {
+        AssociateProfessor asp;
+        asp.getDetails();
+        asp.getPay();
+        asp.generateSlip();
+    } 
+    else if (ch == 3) {
+        Professor p;
+        p.getDetails();
+        p.getPay();
+        p.generateSlip();
+    } 
+    else {
+        cout << "Invalid choice!\n";
+    }
+    return 0;
+}
